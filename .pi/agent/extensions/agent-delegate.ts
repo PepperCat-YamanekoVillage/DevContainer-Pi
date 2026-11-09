@@ -21,9 +21,9 @@ const run = (cmd: string, args: string[], opts: Parameters<typeof execFile>[2]) 
 const shell = promisify(exec);
 
 const MODELS = {
-  high: "opencode-go/glm-5.3-flash:high",
+  high: "opencode-go/deepseek-v4.1-flash:max",
   medium: "opencode-go/deepseek-v4.1-flash:high",
-  low: "opencode-go/deepseek-v4.1-flash:off",
+  low: "opencode-go/deepseek-v4.1-flash:low",
 } as const;
 
 const TIMEOUT_MS = 600_000;
@@ -65,7 +65,7 @@ export default function (pi: ExtensionAPI) {
     parameters: Type.Object({
       difficulty: StringEnum(["high", "medium", "low"], {
         description:
-          "high: design/deep troubleshooting/careful review. medium: coding from an existing design. low: summarization/data extraction only.",
+          "Thinking effort for the sub-agent (same model, deeper reasoning as the level rises): high = max effort — design, deep troubleshooting, careful review; medium = standard — coding from an existing design; low = minimal — summarization, data extraction only.",
       }),
       instructions: Type.String({
         description:
