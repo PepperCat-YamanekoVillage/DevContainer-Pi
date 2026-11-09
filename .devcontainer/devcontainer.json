@@ -1,0 +1,21 @@
+{
+  "name": "PiCoding",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/project,type=bind",
+  "workspaceFolder": "/workspaces/project",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.pi,target=/home/vscode/.pi,type=bind",
+    "source=pi-mise-tool-cache,target=/home/vscode/.local/share/mise,type=volume"
+  ],
+  "runArgs": [
+    "--env-file",
+    "${localWorkspaceFolder}/.env"
+  ],
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "nohup bash -c 'pueued > /dev/null 2>&1 < /dev/null &' > /dev/null 2>&1 < /dev/null",
+  "postAttachCommand": "find /tmp -maxdepth 1 -type s -name 'vscode-ssh-auth-*.sock' -delete"
+}

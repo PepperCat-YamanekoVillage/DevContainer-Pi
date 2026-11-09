@@ -1,0 +1,20 @@
+# pi config, sessions and API credentials (project bind-mounted into ~/.pi)
+.pi/*
+!.pi/agent/
+.pi/agent/*
+!.pi/agent/AGENTS.md
+!.pi/agent/extensions
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Mac
+.DS_Store

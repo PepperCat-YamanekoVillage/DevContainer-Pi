@@ -1,0 +1,17 @@
+[tools]
+## c (zig cc)/ c++ (zig c++)/ zig
+#zig = "latest"
+
+## rust
+#rust = "stable"
+
+## go
+#go = "latest"
+
+## javascript
+#bun = "latest"
+
+## java
+#java = "temurin-21"
+## scala
+#sbt = "latest"
